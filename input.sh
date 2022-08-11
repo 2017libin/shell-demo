@@ -80,39 +80,13 @@ echo "sample6: 处理合并选项"
 
 # 用set --命令替换命令行参数：set -- "替换后的命令行参数"
 set -- $(getopt -q ab:cd "$@")
-# set -- "-c"
-
-while [ -n "$1" ]
-do
-    case "$1" in
-        -a) echo "Found the -a option";;
-        -b) param="$2"  # 参数b需要指定相应的值
-            echo "Found the -b option, with parameter value $param"
-            shift ;;
-        -c) echo "Found the -c option";;  
-        --) shift
-            break ;;
-        *) echo "$1 is not an option";;  # 无效的选项
-    esac
-    shift
-done
-#
-count=1
-for param in "$@"
-do
-    echo "Parameter #$count: $param"
-    count=$[ $count + 1 ]
-done
-
-#
-set -- $(getopt -q ab:cd "$@")
 #
 echo
 while [ -n "$1" ]
 do
     case "$1" in
     -a) echo "Found the -a option" ;;
-    -b) param="$2"
+    -b) param="$2"  # 参数b需要指定相应的值
         echo "Found the -b option, with parameter value $param"
         shift ;;
     -c) echo "Found the -c option" ;;
@@ -130,3 +104,23 @@ do
     count=$[ $count + 1 ]
 done
 #
+
+# --------------------------------------------------------------
+# sample7: 从键盘输入
+# --------------------------------------------------------------
+#
+if read -t 5 -p "Please enter your name: " name  # -t指定输入超时时间，-p输入提示信息
+then
+    echo "Hello $name, welcome to my script"
+else
+    echo
+    echo "Sorry, too slow! "
+fi
+
+# --------------------------------------------------------------
+# sample7: 从文本输入
+# --------------------------------------------------------------
+# 依次读取log文件的每一行
+cat log | while read line; do
+    echo $line
+done
