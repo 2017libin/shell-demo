@@ -121,6 +121,22 @@ fi
 # sample7: 从文本输入
 # --------------------------------------------------------------
 # 依次读取log文件的每一行
+echo
+echo "sample7: 从文本输入"
 cat log | while read line; do
     echo $line
+done
+
+# --------------------------------------------------------------
+# sample8: 使用重定向来指定文本输入
+# --------------------------------------------------------------
+# 依次读取log文件的每一行
+echo
+echo "sample8: 使用重定向来指定文本输入"
+exec 0< log
+count=1
+while read line
+do
+    echo "Line #$count: $line"
+    count=$[ $count + 1 ]
 done
