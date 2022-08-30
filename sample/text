@@ -1,4 +1,1 @@
-156
-513
-1651
-3
+White-box cryptography (WBC) was introduced by Chow et al. to provide security in the untrusted environment where the adversary has full access to the implementation and its environment. In specific, Chow et al. proposed the CEJO framework which converts a block cipher with a secret key into a series of encoded look-up tables (LUTs). Many cryptanalysis methods have been proposed on CEJO framework, such as BGE, DCA, and DFA. At CCS 2015, Bogdanov and Isobe defined the space-hardness in white-box security context and designed a new family of space-hard block ciphers (which is named SPACE). After this intuitive construction, many space-hard block ciphers are proposed with different structures, such as SPNbox, Galaxy, FPL and Yoroi.
